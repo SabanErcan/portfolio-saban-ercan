@@ -11,11 +11,6 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
   
-  // Optimisation des bundles
-  experimental: {
-    optimizeCss: true,
-  },
-  
   // Headers pour la performance
   async headers() {
     return [

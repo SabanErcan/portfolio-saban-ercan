@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import {
   SiCplusplus,
@@ -20,308 +19,298 @@ import {
   SiGit,
   SiWebpack,
   SiQt,
+  SiNextdotjs,
+  SiTypescript,
+  SiDocker,
 } from 'react-icons/si';
 import { FaDatabase, FaJava } from 'react-icons/fa';
-import { VscCode } from 'react-icons/vsc';
 
 export default function About() {
-  const [tvEffect, setTvEffect] = useState(false);
+  const skills = [
+    { name: 'React', icon: SiReact, color: '#61DAFB' },
+    { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
+    { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+    { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+    { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
+    { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+    { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+    { name: 'C++', icon: SiCplusplus, color: '#00599C' },
+    { name: 'Git', icon: SiGit, color: '#F05032' },
+  ];
 
-  useEffect(() => {
-    // Effet TV aléatoire
-    const interval = setInterval(() => {
-      setTvEffect(true);
-      setTimeout(() => setTvEffect(false), 200);
-    }, 3000 + Math.random() * 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const skills = {
-    languages: [
-      { name: 'C++', icon: SiCplusplus, color: '#00599C' },
-      { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
-      { name: 'Java', icon: FaJava, color: '#007396' },
-      { name: 'PHP', icon: SiPhp, color: '#777BB4' },
-      { name: 'SQL', icon: FaDatabase, color: '#4479A1' },
-    ],
-    frontend: [
-      { name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
-      { name: 'CSS3', icon: SiCss3, color: '#1572B6' },
-      { name: 'React', icon: SiReact, color: '#61DAFB' },
-      { name: 'Tailwind', icon: SiTailwindcss, color: '#06B6D4' },
-      { name: 'SCSS', icon: SiSass, color: '#CC6699' },
-    ],
-    backend: [
-      { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
-      { name: 'Express', icon: SiExpress, color: '#000000' },
-      { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
-      { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-      { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
-    ],
-    tools: [
-      { name: 'Git', icon: SiGit, color: '#F05032' },
-      { name: 'Webpack', icon: SiWebpack, color: '#8DD6F9' },
-      { name: 'Qt', icon: SiQt, color: '#41CD52' },
-      { name: 'VS Code', icon: VscCode, color: '#007ACC' },
-    ],
-  };
-
-  // Effet parallaxe désactivé pour éviter les erreurs d'hydratation
-  const getParallaxOffset = () => ({ x: 0, y: 0 });
-
-  const parallax = getParallaxOffset();
+  const experiences = [
+    {
+      year: '2024',
+      title: 'Projets Full Stack',
+      description: 'Développement d\'applications web modernes avec React, Next.js et FastAPI',
+    },
+    {
+      year: '2023',
+      title: 'Début du parcours',
+      description: 'Passion pour le code et apprentissage autodidacte',
+    },
+  ];
 
   return (
     <section
       id="about"
-      className="min-h-screen w-full px-6 md:px-12 lg:px-24 py-24 flex items-center relative overflow-hidden"
+      className="min-h-screen w-full px-6 md:px-12 lg:px-24 py-24 relative overflow-hidden"
     >
-      {/* Formes d'arrière-plan statiques */}
+      {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-20 right-20 w-80 h-80 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(96, 165, 250, 0.1), transparent)',
-            filter: 'blur(50px)',
-          }}
-        />
-        <div
-          className="absolute bottom-20 left-20 w-60 h-60 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(244, 114, 182, 0.1), transparent)',
-            filter: 'blur(40px)',
-          }}
-        />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/12 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gradient-to-tr from-pink-500/12 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4">
+            À propos de <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">moi</span>
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Développeur passionné créant des <span className="text-purple-400 font-semibold">expériences web modernes</span>
+          </p>
+        </motion.div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
           
-          {/* Left: Photo avec effet TV et texte */}
+          {/* Left: Photo + Intro */}
           <motion.div
+            className="lg:col-span-5"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Photo avec effet TV */}
-            <div className="mb-8 flex justify-center lg:justify-start">
-              <motion.div
-                className="relative w-64 h-64 rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                {/* Contenu principal */}
-                <div className={`relative w-full h-full transition-all duration-200 ${tvEffect ? 'blur-sm' : ''}`}>
-                  {/* Photo de profil */}
+            {/* Photo avec effet moderne */}
+            <div className="relative mb-8">
+              <div className="relative w-full aspect-square max-w-md mx-auto">
+                {/* Background gradient animé */}
+                <motion.div
+                  className="absolute -inset-4 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 rounded-3xl blur-2xl opacity-20"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, 0],
+                  }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                
+                {/* Image */}
+                <div className="relative rounded-3xl overflow-hidden border-4 border-white/10">
                   <Image
                     src="/image_saban.jpg"
-                    alt="Saban Ercan - Développeur Full Stack"
+                    alt="Saban Ercan"
                     fill
-                    className="object-cover rounded-2xl"
-                    sizes="256px"
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 400px"
                   />
-                  
-                  {/* Overlay subtil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  
-                  {/* Effet de scan TV */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent animate-tv-scan pointer-events-none" />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
-
-                {/* Effet de gribouillage TV quand tvEffect est actif */}
-                {tvEffect && (
-                  <motion.div
-                    className="absolute inset-0 tv-static"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  />
-                )}
-
-                {/* Bordure effet CRT */}
-                <div className="absolute inset-0 rounded-3xl border-4 border-gray-700/20 shadow-inner pointer-events-none" />
-              </motion.div>
+              </div>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
-              À PROPOS
-            </h2>
-            <div className="h-px bg-current opacity-20 w-full mb-8" />
-
-            <div className="space-y-6 text-lg leading-relaxed opacity-80">
-              <p>
-                Hey, je suis <strong className="text-accent-cyan">Saban</strong> et je suis étudiant en{' '}
-                <strong className="text-accent-cyan">BUT Informatique</strong> à
+            {/* Bio */}
+            <div className="space-y-4 text-gray-300">
+              <p className="text-lg leading-relaxed">
+                Salut ! Je suis <span className="text-cyan-400 font-semibold">Saban</span>, 
+                étudiant en <span className="text-cyan-400 font-semibold">BUT Informatique</span> à 
                 l'IUT Aix-Marseille.
               </p>
-
-              <p>
-                Passionné par le développement full stack, j'aime créer des{' '}
-                <strong className="text-accent-cyan">
-                  applications web interactives
-                </strong>{' '}
-                qui résolvent des problèmes concrets. De la conception à la mise en
-                production, je maîtrise l'ensemble du cycle de développement.
+              <p className="leading-relaxed">
+                Passionné par le <span className="text-purple-400">développement web</span> et 
+                les <span className="text-purple-400">nouvelles technologies</span>, je crée des 
+                applications modernes qui allient performance et esthétique.
               </p>
-
-              <p>
-                Actuellement basé à <strong className="text-accent-cyan">Arles</strong>,
-                je suis toujours à la recherche de nouveaux défis techniques et de
-                projets innovants qui repoussent les limites du possible.
+              <p className="leading-relaxed">
+                Mon terrain de jeu favori ? Le <span className="text-blue-400">Full Stack</span> — 
+                de React à Node.js, en passant par PostgreSQL et Docker.
               </p>
             </div>
 
-            {/* Formation */}
-            <div className="mt-12">
-              <h3 className="text-xl font-display font-bold mb-4 opacity-50">
-                FORMATION
-              </h3>
-              <p className="text-lg">
-                <strong>BUT Informatique</strong> - IUT Aix-Marseille
-              </p>
-              <p className="opacity-70">2023 - 2026 (en cours)</p>
-            </div>
+            {/* CV Download */}
+            <motion.a
+              href="/cv/CV_SabanERCAN.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 mt-8 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Télécharger mon CV</span>
+            </motion.a>
+          </motion.div>
 
-            {/* CV Download avec style moderne */}
-            <motion.div className="mt-8">
-              <motion.a
-                href="/cv/CV_SabanERCAN.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-accent-blue to-accent-cyan text-black rounded-full font-medium hover:shadow-lg hover:shadow-accent-cyan/25 transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>📄</span>
-                <span>Curriculum Vitae</span>
-                <span>↓</span>
-              </motion.a>
+          {/* Right: Skills + Timeline */}
+          <div className="lg:col-span-7 space-y-12">
+            
+            {/* Skills Grid Modern */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-3xl font-display font-bold flex items-center gap-3">
+                  <span className="w-1.5 h-10 bg-gradient-to-b from-purple-500 via-fuchsia-500 to-pink-500 rounded-full" />
+                  Stack Technique
+                </h3>
+                <motion.div 
+                  className="px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20"
+                  animate={{
+                    borderColor: ['rgba(168, 85, 247, 0.2)', 'rgba(236, 72, 153, 0.2)', 'rgba(168, 85, 247, 0.2)'],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
+                  <span className="text-sm font-semibold text-purple-300">10+ Technologies</span>
+                </motion.div>
+              </div>
+              
+              {/* Catégories de compétences */}
+              <div className="space-y-8">
+                {/* Frontend */}
+                <div>
+                  <h4 className="text-sm font-semibold text-purple-300 mb-4 uppercase tracking-wider">Frontend</h4>
+                  <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
+                    {skills.filter(s => ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind'].includes(s.name)).map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        className="group relative aspect-square rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-purple-400/40 transition-all duration-300 overflow-hidden"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.08 }}
+                        whileHover={{ y: -8, scale: 1.05 }}
+                      >
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4">
+                          <skill.icon 
+                            className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-125 transition-transform duration-300" 
+                            style={{ color: skill.color }} 
+                          />
+                          <div className="text-xs font-semibold text-gray-300 text-center opacity-0 group-hover:opacity-100 transition-opacity">{skill.name}</div>
+                        </div>
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 blur-xl" />
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Backend & Database */}
+                <div>
+                  <h4 className="text-sm font-semibold text-pink-300 mb-4 uppercase tracking-wider">Backend & Database</h4>
+                  <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
+                    {skills.filter(s => ['Node.js', 'PostgreSQL', 'Docker', 'C++', 'Git'].includes(s.name)).map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        className="group relative aspect-square rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-pink-400/40 transition-all duration-300 overflow-hidden"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.08 }}
+                        whileHover={{ y: -8, scale: 1.05 }}
+                      >
+                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4">
+                          <skill.icon 
+                            className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-125 transition-transform duration-300" 
+                            style={{ color: skill.color }} 
+                          />
+                          <div className="text-xs font-semibold text-gray-300 text-center opacity-0 group-hover:opacity-100 transition-opacity">{skill.name}</div>
+                        </div>
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 blur-xl" />
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
 
-          {/* Right: Compétences */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-3xl font-display font-bold mb-8">
-              COMPÉTENCES TECHNIQUES
-            </h3>
-            <div className="h-px bg-current opacity-20 w-full mb-8" />
+            {/* Timeline */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                <span className="w-2 h-8 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full" />
+                Parcours
+              </h3>
 
-            <div className="space-y-12">
-              {/* Langages */}
-              <div>
-                <h4 className="text-xl font-display font-semibold mb-6 opacity-70 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-accent-blue/20 rounded-full flex items-center justify-center text-accent-blue text-sm">
-                    L
-                  </span>
-                  Langages
-                </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {skills.languages.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/20 backdrop-blur-sm border border-gray-700/30 hover:border-accent-cyan/50 transition-all duration-300"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <skill.icon className="w-5 h-5" style={{ color: skill.color }} />
-                      <span className="text-sm font-medium">{skill.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
+              <div className="space-y-6">
+                {experiences.map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex gap-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    {/* Year Badge */}
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-400/30 flex items-center justify-center">
+                        <span className="text-sm font-bold text-purple-300">{exp.year}</span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 pt-1">
+                      <h4 className="text-lg font-semibold text-white mb-1">{exp.title}</h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">{exp.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-
-              {/* Frontend */}
-              <div>
-                <h4 className="text-xl font-display font-semibold mb-6 opacity-70 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-accent-cyan/20 rounded-full flex items-center justify-center text-accent-cyan text-sm">
-                    F
-                  </span>
-                  Frontend
-                </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {skills.frontend.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/20 backdrop-blur-sm border border-gray-700/30 hover:border-accent-cyan/50 transition-all duration-300"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <skill.icon className="w-5 h-5" style={{ color: skill.color }} />
-                      <span className="text-sm font-medium">{skill.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Backend */}
-              <div>
-                <h4 className="text-xl font-display font-semibold mb-6 opacity-70 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-accent-pink/20 rounded-full flex items-center justify-center text-accent-pink text-sm">
-                    B
-                  </span>
-                  Backend & BDD
-                </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {skills.backend.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/20 backdrop-blur-sm border border-gray-700/30 hover:border-accent-cyan/50 transition-all duration-300"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <skill.icon className="w-5 h-5" style={{ color: skill.color }} />
-                      <span className="text-sm font-medium">{skill.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tools */}
-              <div>
-                <h4 className="text-xl font-display font-semibold mb-6 opacity-70 flex items-center gap-3">
-                  <span className="w-8 h-8 bg-accent-yellow/20 rounded-full flex items-center justify-center text-accent-yellow text-sm">
-                    T
-                  </span>
-                  Outils & Frameworks
-                </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {skills.tools.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/20 backdrop-blur-sm border border-gray-700/30 hover:border-accent-cyan/50 transition-all duration-300"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <skill.icon className="w-5 h-5" style={{ color: skill.color }} />
-                      <span className="text-sm font-medium">{skill.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
+
+        {/* Stats Bar */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {[
+            { number: '5+', label: 'Projets', icon: '🚀' },
+            { number: '10+', label: 'Technologies', icon: '⚡' },
+            { number: '1.5', label: 'Ans d\'expérience', icon: '📅' },
+            { number: '100%', label: 'Motivation', icon: '💪' },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-cyan-400/50 transition-all duration-300"
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              <div className="text-3xl mb-2">{stat.icon}</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-1">
+                {stat.number}
+              </div>
+              <div className="text-sm text-gray-400">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
