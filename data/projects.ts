@@ -28,6 +28,10 @@ export interface ProjectData {
     author: string;
     role: string;
   };
+  prevProject?: {
+    slug: string;
+    title: string;
+  };
   nextProject?: {
     slug: string;
     title: string;
@@ -86,6 +90,10 @@ export const projectsData: ProjectData[] = [
       author: 'Prof. Martin Dubois',
       role: 'Enseignant BUT Informatique'
     },
+    prevProject: {
+      slug: 'ocean-fft',
+      title: 'Ocean FFT'
+    },
     nextProject: {
       slug: 'radar-avions',
       title: 'Radar Avions'
@@ -131,6 +139,10 @@ export const projectsData: ProjectData[] = [
     links: {
       github: 'https://github.com/SabanErcan/Radar'
       // demo: 'https://radar-avions.vercel.app'
+    },
+    prevProject: {
+      slug: 'nexus',
+      title: 'NEXUS'
     },
     nextProject: {
       slug: 'portfolio',
@@ -182,8 +194,8 @@ export const projectsData: ProjectData[] = [
       github: 'https://github.com/SabanErcan/portfolio-saban'
     },
     nextProject: {
-      slug: 'qt-app',
-      title: 'App Qt C++'
+      slug: 'ocean-fft',
+      title: 'Ocean FFT'
     }
   },
   {
@@ -229,6 +241,10 @@ export const projectsData: ProjectData[] = [
     },
     links: {
       github: 'https://github.com/SabanErcan/OceanFFT-Simulator'
+    },
+    prevProject: {
+      slug: 'portfolio',
+      title: 'Portfolio'
     },
     nextProject: {
       slug: 'nexus',

@@ -623,9 +623,9 @@ export default function ProjectPage() {
           </section>
         )}
 
-        {/* Navigation vers projet suivant */}
-        {project.nextProject && (
-          <section className="px-6 md:px-12 lg:px-24 py-24 border-t border-current border-opacity-10">
+        {/* Navigation entre projets */}
+        {(project.prevProject || project.nextProject) && (
+          <section className="px-6 md:px-12 lg:px-24 py-24 border-t border-white/10">
             <motion.div
               className="max-w-7xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
@@ -633,16 +633,36 @@ export default function ProjectPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="text-center">
-                <p className="text-lg opacity-70 mb-8">Projet suivant</p>
-                <Link
-                  href={`/project/${project.nextProject.slug}`}
-                  className="inline-block group"
-                >
-                  <div className="text-4xl md:text-6xl font-display font-bold group-hover:text-accent-cyan transition-colors">
-                    {project.nextProject.title} →
-                  </div>
-                </Link>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Projet Précédent */}
+                {project.prevProject ? (
+                  <Link
+                    href={`/project/${project.prevProject.slug}`}
+                    className="group block p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-400/50 hover:bg-white/[0.05] transition-all"
+                  >
+                    <p className="text-sm text-gray-400 mb-3">← Projet précédent</p>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                      {project.prevProject.title}
+                    </h3>
+                  </Link>
+                ) : (
+                  <div></div>
+                )}
+
+                {/* Projet Suivant */}
+                {project.nextProject ? (
+                  <Link
+                    href={`/project/${project.nextProject.slug}`}
+                    className="group block p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-400/50 hover:bg-white/[0.05] transition-all text-right"
+                  >
+                    <p className="text-sm text-gray-400 mb-3">Projet suivant →</p>
+                    <h3 className="text-2xl md:text-3xl font-display font-bold group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                      {project.nextProject.title}
+                    </h3>
+                  </Link>
+                ) : (
+                  <div></div>
+                )}
               </div>
             </motion.div>
           </section>
