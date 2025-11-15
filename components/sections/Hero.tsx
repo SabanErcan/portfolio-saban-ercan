@@ -1,56 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section
       id="home"
       className="relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 lg:px-24 overflow-hidden"
     >
-      {/* Background avec gradients animés - Style Apple purple mesh */}
+      {/* Background simple et performant */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-purple-400/20 via-violet-400/20 to-transparent rounded-full blur-3xl"
-          animate={{
-            x: mousePosition.x * 2,
-            y: mousePosition.y * 2,
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ scale: { duration: 8, repeat: Infinity, ease: 'easeInOut' } }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-fuchsia-400/20 via-purple-400/20 to-transparent rounded-full blur-3xl"
-          animate={{
-            x: mousePosition.x * -1.5,
-            y: mousePosition.y * -1.5,
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ scale: { duration: 10, repeat: Infinity, ease: 'easeInOut' } }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-violet-400/15 via-purple-400/15 to-fuchsia-400/15 rounded-full blur-3xl"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        />
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-purple-400/10 via-violet-400/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-fuchsia-400/10 via-purple-400/10 to-transparent rounded-full blur-3xl" />
       </div>
 
       {/* Contenu principal */}
@@ -89,9 +50,6 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              style={{
-                transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
-              }}
             >
               Saban Ercan
             </motion.span>
@@ -181,19 +139,6 @@ export default function Hero() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div className="flex flex-col items-center gap-2 text-gray-400">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
         </motion.div>
       </div>
     </section>

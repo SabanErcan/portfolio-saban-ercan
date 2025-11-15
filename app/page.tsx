@@ -4,11 +4,13 @@ import Projects from '@/components/sections/Projects';
 import About from '@/components/sections/About';
 import Contact from '@/components/sections/Contact';
 import AnimatedBackground from '@/components/ui/AnimatedBackground';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   return (
     <main className="relative">
       <AnimatedBackground />
+      <ThemeToggle />
       <Header />
       <Hero />
       <Projects />
